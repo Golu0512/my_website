@@ -1,38 +1,87 @@
-.App {
-  text-align: center;
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* .active {
+  border-bottom: 2px solid red;
+} */
+
+.pointer {
+  cursor: pointer;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.header {
+  background-color: #333333;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.zIndex1 {
+  z-index: 1;
+}
+
+.zIndexn0 {
+  z-index: 0;
+}
+
+.homeContainer {
+  height: auto;
+}
+
+a {
+  text-decoration: none;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.cardBody {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 1px 1px 7px 0px rgba(255,255,255,0.75);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.cardImage {
+  object-fit: contain;
+}
+
+.downloadBannerImg {
+  object-fit: contain;
+}
+
+.mainFooter {
+  background-color: dimgrey;
+  width: 100%;
+}
+
+.footerInput {
+  width: 300px;
+}
+
+.downloadPage {
+  width: 100%;
+  height: auto;
+}
+
+.mainDive {
+  height: 100vh;
+}
+
+/* toup button */
+
+.bg_to_up {
+  background: linear-gradient(to right, #2BC0E4 0%, #EAECC6  51%, #2BC0E4  100%);
+  position: fixed;
+  bottom: 80px;
+  font-size: 30px;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;            
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
+}
+
+.bg_to_up:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
 }
