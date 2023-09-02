@@ -5,6 +5,7 @@ import CarouselSlider from '../components/CarouselSlider';
 import ToUpButton from '../components/ToUpButton';
 import PaginationComponent from '../components/PaginationComponent';
 import axios from 'axios';
+import LoadingOverlay from 'react-loading-overlay';
 
 
 // copy image address as given below
@@ -88,17 +89,20 @@ const Home = () => {
     const searchTerm = useSelector(state=> state.string.setSearchText);
     const [ moviess, setMoviess ] = useState([]);
     const [ movies, setMovies ] = useState([]);
+    const [ loading, setLoading ] = useState(false);
 
     const getMovieData = async () => {
-        await axios.get('http://localhost:8080/old_movies')
+        setLoading(true);
+        await axios.get('https://my-website-api.onrender.com/old_movies')
         .then((response) => setMovies(response.data))
         .catch(err=>console.log(err))
+        setLoading(false);
     };
 
     const filterData = async (searchTerm) => {
         const filterdata = await movies.filter((items)=>{
             return (
-                items.title?.toLowerCase().includes(searchTerm?.toLowerCase())
+                items.movie_name?.toLowerCase().includes(searchTerm?.toLowerCase())
             );
         });
         setMoviess(filterdata)
@@ -115,6 +119,11 @@ const Home = () => {
 
     return (
         <>
+        <LoadingOverlay
+            active={loading}
+            spinner
+            text='Loading your movies...'
+        >
             <div className='homeContainer bg-dark'>
                 {!searchTerm ?
                 <div className='mb-lg-2 mb-md-2 mb-2 py-3'>
@@ -170,14 +179,15 @@ const Home = () => {
                     </div> */}
 
                 </div>
+
+                <div className='d-flex justify-content-center my-5'>
+                    <PaginationComponent />
+                </div>
                 
                 <ToUpButton />
 
             </div>
-
-            <div className='d-flex justify-content-center my-4'>
-                <PaginationComponent />
-            </div>
+        </LoadingOverlay>
         </>
     )
 }
