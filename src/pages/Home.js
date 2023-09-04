@@ -24,8 +24,8 @@ const Home = () => {
         setLoading(false);
     };
 
-    const filterData = async (searchTerm) => {
-        const filterdata = await movies.filter((items)=>{
+    const filterData = (searchTerm) => {
+        const filterdata = movies.filter((items)=>{
             return (
                 items.movie_name?.toLowerCase().includes(searchTerm?.toLowerCase())
             );

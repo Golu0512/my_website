@@ -2,30 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import LoadingOverlay from 'react-loading-overlay';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { setSearchText } from '../states/reducers/index';
 
 const AnimeDetail = () => {
     const location = useLocation();
+    const dispatch = useDispatch();
     const [ loading, setLoading ] = useState(false);
     const [ details, setDetails ] = useState([]);
     const animeId = location.state.id || 1;
     const sendId = {id:animeId}
-
-    // const details = [
-    //     {
-    //         id: animeId,
-    //         title: 'Spider-Man: Across the Spider-Verse (2023) Dual Audio [Hindi ORG.- English] WEB-DL Download 480p [600MB] | 720p [1.4GB] | 1080p [3.4GB]',
-    //         downloadDetails: 'Download Spider-Man: Across the Spider-Verse (2023) Dual Audio [Hin-Eng] available to download in 480p, 720p, and 1080p WEB-DL qualities. 480p in 600MB, 720p in 1.4GB, 1080p in 3.4GB in MKV Format. This Hollywood movie is based on the Animation, Action and Adventure genres. The main stars of the movie are Shameik Moore, Hailee Steinfeld, Oscar Isaac.',
-    //         ourWebsite: 'AnimeLovers.com is one of the Best Websites/Platform For Hollywood, Bollywood Movies, and Series.',
-    //         ratingImgBanner: '/images/spidermanbanner.png',
-    //         movieTitilewithSite: 'Download Spider-Man: Across the Spider-Verse Dual Audio [Hindi ORG.- English] WEB-DL Print 480p | 720p | 1080p – AllMoviesHub.Party',
-    //         movieName: 'Name: Spider-Man: Across the Spider-Verse',
-    //         releaseYear: 'Release Year: 2023',
-    //         movieLanguage: 'Language: Dual Audio [Hindi ORG.- English]',
-    //         movieResolution: 'Resolution: 480p | 720p | 1080p WEB-DL',
-    //         movieSize: 'Size: 600MB | 1.4GB | 3.4GB',
-    //         quickStory: 'After reuniting with Gwen Stacy, Miles Morales — Brooklyn’s full-time, friendly neighborhood Spider-Man — is catapulted across the Multiverse, where he encounters a team of Spider-People charged with protecting its very existence. But when the heroes clash on how to handle a new threat, Miles finds himself pitted against the other Spiders and must redefine what it means to be a hero so he can save the people he loves most.',
-    //     }
-    // ];
 
     const getAboutMovieData = async () => {
         setLoading(true);
@@ -33,6 +19,7 @@ const AnimeDetail = () => {
             const res = await axios.post('https://my-website-api.onrender.com/get_single_data', sendId);
             setDetails(res?.data)
             setLoading(false);
+            dispatch(setSearchText(''))
         } catch (error) {
             console.error('Error fetching data:', error);
         }
