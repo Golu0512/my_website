@@ -6,6 +6,7 @@ import ToUpButton from '../components/ToUpButton';
 import PaginationComponent from '../components/PaginationComponent';
 import axios from 'axios';
 import LoadingOverlay from 'react-loading-overlay';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
 
@@ -13,6 +14,7 @@ const Home = () => {
     const [ moviess, setMoviess ] = useState([]);
     const [ movies, setMovies ] = useState([]);
     const [ loading, setLoading ] = useState(false);
+    const navigate = useNavigate();
 
     const getMovieData = async () => {
         setLoading(true);
@@ -33,6 +35,7 @@ const Home = () => {
 
     useEffect(()=>{ 
         getMovieData();
+        navigate('/')
     },[]);
 
     useEffect(()=>{
