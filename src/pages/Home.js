@@ -60,7 +60,7 @@ const Home = () => {
     useEffect(()=>{ 
         getMovieData();
         // navigate('/')
-    },[]);
+    },[activePage]);
 
     useEffect(()=>{
         filterData(searchTerm);
