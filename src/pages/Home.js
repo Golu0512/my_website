@@ -47,19 +47,19 @@ const Home = () => {
 
     const totalPagesCalc = (total, limit) => {
         let pages = [];
-        for (let x = 1; x <= (total/limit); x++) {
+        for (let x = 1; x <= Math.ceil(total/limit); x++) {
             pages.push(x);
         }
         return pages;
     }
 
-    useEffect(()=>{
-        getMovieData();
-    },[activePage])
+    // useEffect(()=>{
+    //     getMovieData();
+    // },[activePage])
 
     useEffect(()=>{ 
         getMovieData();
-        navigate('/')
+        // navigate('/')
     },[]);
 
     useEffect(()=>{
@@ -133,7 +133,7 @@ const Home = () => {
                 {/* <div className='d-flex justify-content-center my-5'>
                     <PaginationComponent total={totalMovies} limit={limit} />
                 </div> */}
-                
+                {!searchTerm ?
                 <div className='d-flex justify-content-center align-items-center py-5 my-lg-5 my-md-5'>
                     <ul className='text-white d-flex justify-content-center align-items-center gap-lg-3 gap-md-3 gap-2 p-0 px-2 paginationUl'>
                         {
@@ -144,9 +144,11 @@ const Home = () => {
                                 return <li className={`pageList py-1 px-2 ${val === activePage ? 'activePageList' : ''}`} onClick={()=>setActivePage(val)} key={val}>{val}</li>
                             })
                         }
-                        <li className='pageList' onClick={()=>setActivePage(activePage + 1)}>Next</li>
+                        {activePage != (totalMovies/limit) ? <li className='pageList' onClick={()=>setActivePage(activePage + 1)}>Next</li> : '' }
                     </ul>
                 </div>
+                : null 
+                }
                 
                 
                 <ToUpButton />
