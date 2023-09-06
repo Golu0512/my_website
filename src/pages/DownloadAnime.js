@@ -65,7 +65,7 @@ const AnimeDetail = () => {
                         <span className='text-center mt-4 font-bold text-white text-capitalize text-info'>Resolution: {details?.resolution}</span>
                         {details?.file_size != '' ? <span className='text-center mt-4 font-bold text-white text-capitalize text-info'>Size: {details?.file_size}</span> : '' }
                         <div className='d-grid w-75'>
-                            <span className='text-center mt-4 font-bold fs-4 text-capitalize text-danger'>quick story line</span>
+                            <span className='text-center mt-4 font-bold fs-4 text-capitalize text-danger'>short description</span>
                             <span className='text-center mt-4 font-bold text-white'>{details?.quick_story}</span>
                         </div>
                         <div className='text-center mt-4'>

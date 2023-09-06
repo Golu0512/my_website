@@ -1,5 +1,6 @@
 import React from 'react';
 import { BiLogoGmail, BiLogoWhatsapp } from "react-icons/bi";
+import UserRequirement from '../components/UserRequirement';
 
 const Footer = () => {
     return (
@@ -25,8 +26,7 @@ const Footer = () => {
                         <div className='col-lg-8 col-md-8 col-12 d-grid justify-content-center'>
                             <span className='text-white text-capitalize fw-bold text-center'>submit anime name, we'll provide you within 24 hours</span>
                             <div className='d-flex justify-content-center align-items-center'>
-                                <input type='text' className='footerInput rounded-pill px-2 p-1' />
-                                <button className='btn btn-success ms-lg-2 ms-md-2 ms-2 rounded-pill text-capitalize'>submit</button>
+                                <UserRequirement />
                             </div>
                         </div>
                     </div>
