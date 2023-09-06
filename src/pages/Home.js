@@ -10,16 +10,28 @@ import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
 
+    const limit = 24;
+
     const searchTerm = useSelector(state=> state.string.setSearchText);
     const [ moviess, setMoviess ] = useState([]);
     const [ movies, setMovies ] = useState([]);
     const [ loading, setLoading ] = useState(false);
     const navigate = useNavigate();
+    const [ totalMovies, setTotalMovies ] = useState(0);
+    const [ activePage, setActivePage ] = useState(1);
 
     const getMovieData = async () => {
         setLoading(true);
-        await axios.get('https://my-website-api.onrender.com/old_movies')
-        .then((response) => setMovies(response.data))
+        await axios.get('https://my-website-api.onrender.com/old_movies', {
+            params: {
+                page: activePage,
+                limit: limit
+            }
+        })
+        .then(({data}) => {
+            setMovies(data?.data);
+            setTotalMovies(data?.total)
+        })
         .catch(err=>console.log(err))
         setLoading(false);
     };
@@ -32,6 +44,18 @@ const Home = () => {
         });
         setMoviess(filterdata)
     }
+
+    const totalPagesCalc = (total, limit) => {
+        let pages = [];
+        for (let x = 1; x <= (total/limit); x++) {
+            pages.push(x);
+        }
+        return pages;
+    }
+
+    useEffect(()=>{
+        getMovieData();
+    },[activePage])
 
     useEffect(()=>{ 
         getMovieData();
@@ -106,9 +130,24 @@ const Home = () => {
 
                 </div>
 
-                <div className='d-flex justify-content-center my-5'>
-                    <PaginationComponent />
+                {/* <div className='d-flex justify-content-center my-5'>
+                    <PaginationComponent total={totalMovies} limit={limit} />
+                </div> */}
+                
+                <div className='d-flex justify-content-center align-items-center py-5 my-lg-5 my-md-5'>
+                    <ul className='text-white d-flex justify-content-center align-items-center gap-lg-3 gap-md-3 gap-2 p-0 px-2 paginationUl'>
+                        {
+                            activePage !== 1 && <li className='pageList' onClick={()=>setActivePage(activePage - 1)}>Previous</li>
+                        }
+                        {
+                            totalPagesCalc(totalMovies, limit).map((val)=>{
+                                return <li className={`pageList py-1 px-2 ${val === activePage ? 'activePageList' : ''}`} onClick={()=>setActivePage(val)} key={val}>{val}</li>
+                            })
+                        }
+                        <li className='pageList' onClick={()=>setActivePage(activePage + 1)}>Next</li>
+                    </ul>
                 </div>
+                
                 
                 <ToUpButton />
 
