@@ -89,7 +89,7 @@ const Home = () => {
                         {!searchTerm ?
                             movies.map((val) =>{
                                 return (
-                                    <div className='col-lg-2 col-md-6 col-sm-6 mb-lg-4 mb-md-4 mb-4 d-flex justify-content-center align-items-center' key={val._id}>
+                                    <div className='col-lg-2 col-md-6 col-sm-6 mb-lg-4 mb-md-4 mb-4 d-flex justify-content-center' key={val._id}>
                                         <MovieCard id={val._id} image={val.cover_image} title={val.title} moviename={val.movie_name} category={val.category} />
                                     </div>
                                 )
@@ -144,7 +144,7 @@ const Home = () => {
                                 return <li className={`pageList py-1 px-2 ${val === activePage ? 'activePageList' : ''}`} onClick={()=>setActivePage(val)} key={val}>{val}</li>
                             })
                         }
-                        {activePage !== (totalMovies/limit) ? <li className='pageList' onClick={()=>setActivePage(activePage + 1)}>Next</li> : '' }
+                        {activePage !== Math.ceil(totalMovies/limit) ? <li className='pageList' onClick={()=>setActivePage(activePage + 1)}>Next</li> : '' }
                     </ul>
                 </div>
                 : null 
