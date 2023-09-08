@@ -5,6 +5,7 @@ import Home from './pages/Home.js';
 import About from './pages/About';
 import Footer from './pages/Footer';
 import DownloadAnime from './pages/DownloadAnime';
+import SearchedMovies from './pages/SearchedMovies';
 // import { useEffect, useState } from 'react';
 // import axios from 'axios';
 
@@ -75,6 +76,7 @@ function App() {
         <Route exact path='/' element={<Home />} />
         <Route path='/about' element={<About />} />
         <Route path='/downloadanime' element={<DownloadAnime />} />
+        <Route path='/searchedmovies' element={<SearchedMovies />} />
       </Routes>
       <Footer />
     </>
