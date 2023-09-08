@@ -30,7 +30,7 @@ const Home = () => {
 
     const getMovieData = async () => {
         setLoading(true);
-        await axios.get('http://localhost:8080/old_movies', {
+        await axios.get('https://my-website-api.onrender.com/old_movies', {
             params: {
                 page: activePage,
                 limit: limit
@@ -55,7 +55,7 @@ const Home = () => {
             return notify('Please enter movie name!');
         } else if (searchMovie) {
             try {
-                let result = await axios.get('http://localhost:8080/old_movies', {
+                let result = await axios.get('https://my-website-api.onrender.com/old_movies', {
                     params: {
                         search: searchMovie.search
                     }
