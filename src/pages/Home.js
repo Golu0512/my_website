@@ -1,28 +1,36 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import MovieCard from '../components/MovieCard';
 import CarouselSlider from '../components/CarouselSlider';
 import ToUpButton from '../components/ToUpButton';
-import PaginationComponent from '../components/PaginationComponent';
 import axios from 'axios';
 import LoadingOverlay from 'react-loading-overlay';
 import { useNavigate } from 'react-router-dom';
+import { setSearchText } from '../states/reducers/index';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Home = () => {
 
     const limit = 24;
 
     const searchTerm = useSelector(state=> state.string.setSearchText);
+    // const resetSearch = useSelector(state=> state.string.setSearchText);
     const [ moviess, setMoviess ] = useState([]);
     const [ movies, setMovies ] = useState([]);
     const [ loading, setLoading ] = useState(false);
-    const navigate = useNavigate();
+    // const dispatch = useDispatch();
+    // const navigate = useNavigate();
     const [ totalMovies, setTotalMovies ] = useState(0);
     const [ activePage, setActivePage ] = useState(1);
+    const [ searchMovie, setSearchMovie ] = useState({search:''});
+    const notify = (message) => toast.success(message, {
+        theme: "colored"
+    });
 
     const getMovieData = async () => {
         setLoading(true);
-        await axios.get('https://my-website-api.onrender.com/old_movies', {
+        await axios.get('http://localhost:8080/old_movies', {
             params: {
                 page: activePage,
                 limit: limit
@@ -36,14 +44,37 @@ const Home = () => {
         setLoading(false);
     };
 
-    const filterData = (searchTerm) => {
-        const filterdata = movies.filter((items)=>{
-            return (
-                items.movie_name?.toLowerCase().includes(searchTerm?.toLowerCase())
-            );
-        });
-        setMoviess(filterdata)
+    const handleChangeValue = (e) => {
+        const { name, value } = e.target;
+        setSearchMovie({...searchMovie, [name]: value});
     }
+
+    const getSearchedData = async (e) => {
+        e.preventDefault();
+        if(!searchMovie || searchMovie.search === '') {
+            return notify('Please enter movie name!');
+        } else if (searchMovie) {
+            try {
+                let result = await axios.get('http://localhost:8080/old_movies', {
+                    params: {
+                        search: searchMovie.search
+                    }
+                });
+                setMoviess(result.data.data);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    }
+
+    // const filterData = (searchTerm) => {
+    //     const filterdata = movies.filter((items)=>{
+    //         return (
+    //             items.movie_name?.toLowerCase().includes(searchTerm?.toLowerCase())
+    //         );
+    //     });
+    //     setMoviess(filterdata)
+    // }
 
     const totalPagesCalc = (total, limit) => {
         let pages = [];
@@ -53,19 +84,20 @@ const Home = () => {
         return pages;
     }
 
-    // useEffect(()=>{
-    //     getMovieData();
-    // },[activePage])
-
     useEffect(()=>{ 
         getMovieData();
         // navigate('/')
     },[activePage]);
 
     useEffect(()=>{
-        filterData(searchTerm);
-        window.scroll(0,0);
-    },[searchTerm])
+        // console.log(searchMovie);
+        // console.log('aaaaa',moviess);
+    },[searchMovie,moviess])
+
+    // useEffect(()=>{
+    //     filterData(searchTerm);
+    //     window.scroll(0,0);
+    // },[searchTerm])
 
     return (
         <>
@@ -85,8 +117,15 @@ const Home = () => {
                 <div className='container mt-2'>
 
                     <div className='row g-lg-3 g-md-3'>
-                        <h4 className='text-white text-capitalize text-center bg-warning'>{!searchTerm ? 'latest movies' : 'searched'}</h4>
-                        {!searchTerm ?
+
+                        <div className='d-flex justify-content-around align-items-center p-0 m-0 mt-lg-4 mt-md-4 mb-lg-0 mb-md-0 mb-4'>
+                            <form onSubmit={getSearchedData} className='w-100 d-flex justify-content-center'>
+                                <input className="form-control me-4 w-50" value={searchMovie.search} onChange={handleChangeValue} type="search" placeholder="Search" name='search' />
+                                <button type='submit' className="search-button text-capitalize"><span>searching!</span><span>click</span></button>
+                            </form>
+                        </div>
+                        <h4 className='text-white text-capitalize text-center bg-warning'>{!moviess.length === 0 ? 'latest movies' : 'searched'}</h4>
+                        {moviess.length === 0 ?
                             movies.map((val) =>{
                                 return (
                                     <div className='col-lg-2 col-md-6 col-sm-6 mb-lg-4 mb-md-4 mb-4 d-flex justify-content-center' key={val._id}>
@@ -135,17 +174,19 @@ const Home = () => {
                 </div> */}
                 {!searchTerm ?
                 <div className='d-flex justify-content-center align-items-center py-5 my-lg-5 my-md-5'>
-                    <ul className='text-white d-flex justify-content-center align-items-center gap-lg-3 gap-md-3 gap-2 p-0 px-2 paginationUl'>
-                        {
-                            activePage !== 1 && <li className='pageList' onClick={()=>setActivePage(activePage - 1)}>Previous</li>
-                        }
-                        {
-                            totalPagesCalc(totalMovies, limit).map((val)=>{
-                                return <li className={`pageList py-1 px-2 ${val === activePage ? 'activePageList' : ''}`} onClick={()=>setActivePage(val)} key={val}>{val}</li>
-                            })
-                        }
-                        {activePage !== Math.ceil(totalMovies/limit) ? <li className='pageList' onClick={()=>setActivePage(activePage + 1)}>Next</li> : '' }
-                    </ul>
+                    {moviess.length === 0 ?
+                        <ul className='text-white d-flex justify-content-center align-items-center gap-lg-3 gap-md-3 gap-2 p-0 px-2 paginationUl'>
+                            {
+                                activePage !== 1 && <li className='pageList' onClick={()=>setActivePage(activePage - 1)}>Previous</li>
+                            }
+                            {
+                                totalPagesCalc(totalMovies, limit).map((val)=>{
+                                    return <li className={`pageList py-1 px-2 ${val === activePage ? 'activePageList' : ''}`} onClick={()=>setActivePage(val)} key={val}>{val}</li>
+                                })
+                            }
+                            {activePage !== Math.ceil(totalMovies/limit) ? <li className='pageList' onClick={()=>setActivePage(activePage + 1)}>Next</li> : '' }
+                        </ul> : null
+                    }
                 </div>
                 : null 
                 }
@@ -155,6 +196,7 @@ const Home = () => {
 
             </div>
         </LoadingOverlay>
+        <ToastContainer />
         </>
     )
 }

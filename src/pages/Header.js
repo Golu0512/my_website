@@ -1,17 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { setSearchText } from '../states/reducers/index';
+// import { useSelector, useDispatch } from 'react-redux';
+// import { setSearchText } from '../states/reducers/index';
 
 const Header = () => {
-    const resetSearch = useSelector(state=> state.string.setSearchText);
-    const searchTerm = useSelector(state=> state.string)
-    const dispatch = useDispatch();
+    // const resetSearch = useSelector(state=> state.string.setSearchText);
+    // const searchTerm = useSelector(state=> state.string)
+    // const dispatch = useDispatch();
 
-    const setSearchHandle = (e) =>{
-        const {value} = e.target;
-        dispatch(setSearchText(value))
-    }
+    // const setSearchHandle = (e) =>{
+    //     const {value} = e.target;
+    //     dispatch(setSearchText(value))
+    // }
 
     return (
         <div className='header zIndex1 border-bottom sticky-top'>
@@ -31,7 +31,7 @@ const Header = () => {
                         </li>
                     </ul>
                     {/* <form className="d-flex"> */}
-                        <input className="form-control me-4 w-50" value={resetSearch} onChange={setSearchHandle} type="search" placeholder="Search" aria-label="Search" />
+                        {/* <input className="form-control me-4 w-50" value={resetSearch} onChange={setSearchHandle} type="search" placeholder="Search" aria-label="Search" /> */}
                         {/* <button className="btn btn-outline-success" type="submit">Search</button> */}
                     {/* </form> */}
                     </div>
