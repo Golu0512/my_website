@@ -50,7 +50,7 @@ const Header = () => {
             <div className='header zIndex1 border-bottom sticky-top'>
                 <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                     <div className="container-fluid">
-                        <Link to='/'><span className="navbar-brand text-uppercase" >omnianime</span></Link>
+                        <Link to='/'><span className="navbar-brand text-uppercase" >funkyanimehub</span></Link>
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                         </button>
