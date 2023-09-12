@@ -50,7 +50,12 @@ const Header = () => {
             <div className='header zIndex1 border-bottom sticky-top'>
                 <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                     <div className="container-fluid">
-                        <Link to='/'><span className="navbar-brand text-uppercase" >funkyanimehub</span></Link>
+                        <Link to='/'>
+                            <div className='d-flex justify-content-center align-items-center'>
+                                <img src='/images/logo.png' height='50px' />
+                                <span className="navbar-brand text-capitalize" >funkyanimehub</span>
+                            </div>
+                        </Link>
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                         </button>

@@ -97,6 +97,11 @@ a {
   cursor: pointer;
 }
 
+.pageList:hover {
+  background-color: rebeccapurple;
+  border-radius: 50px;
+}
+
 .activePageList {
   background-color: rebeccapurple;
   border-radius: 50px;

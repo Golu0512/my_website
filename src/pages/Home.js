@@ -69,7 +69,7 @@ const Home = () => {
                     <meta name='description' content='free anime movies download' />
                 </Helmet>
                 {!searchTerm ?
-                <div className='mb-lg-2 mb-md-2 mb-2 py-3'>
+                <div className='mb-lg-2 mb-md-2 mb-2 py-1'>
                     <CarouselSlider />
                 </div>
                 :
@@ -78,7 +78,7 @@ const Home = () => {
                 <div className='container mt-2'>
 
                     <div className='row g-lg-3 g-md-3'>
-                        <h4 className='text-white text-capitalize text-center bg-warning'>{!moviess.length === 0 ? 'latest movies' : 'searched'}</h4>
+                        <h4 className='text-white text-capitalize text-center bg-warning'>{moviess.length === 0 ? 'latest movies' : 'searched'}</h4>
                         {
                             movies.map((val) =>{
                                 return (
