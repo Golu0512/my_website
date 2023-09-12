@@ -8,6 +8,7 @@ import LoadingOverlay from 'react-loading-overlay';
 import { useNavigate } from 'react-router-dom';
 import { setSearchText } from '../states/reducers/index';
 import SearchedMovies from './SearchedMovies';
+import { Helmet } from 'react-helmet';
 
 const Home = () => {
 
@@ -61,6 +62,12 @@ const Home = () => {
             text='Loading your movies...'
         >
             <div className='homeContainer bg-dark'>
+                <Helmet>
+                    <meta charSet='utf-8' />
+                    <title>funkyanimehub</title>
+                    <meta name='keywords' content='anime, movies, free download anime movies, cartoons, free movie download, anime free download, anime series' />
+                    <meta name='description' content='free anime movies download' />
+                </Helmet>
                 {!searchTerm ?
                 <div className='mb-lg-2 mb-md-2 mb-2 py-3'>
                     <CarouselSlider />
@@ -71,13 +78,6 @@ const Home = () => {
                 <div className='container mt-2'>
 
                     <div className='row g-lg-3 g-md-3'>
-
-                        {/* <div className='d-flex justify-content-around align-items-center p-0 m-0 mt-lg-4 mt-md-4 mb-lg-0 mb-md-0 mb-4'>
-                            <form onSubmit={getSearchedData} className='w-100 d-flex justify-content-center'>
-                                <input className="form-control me-4 w-50" value={searchMovie.search} onChange={handleChangeValue} type="search" placeholder="Search" name='search' />
-                                <button type='submit' className="search-button text-capitalize"><span>searching!</span><span>click</span></button>
-                            </form>
-                        </div> */}
                         <h4 className='text-white text-capitalize text-center bg-warning'>{!moviess.length === 0 ? 'latest movies' : 'searched'}</h4>
                         {
                             movies.map((val) =>{
@@ -108,8 +108,6 @@ const Home = () => {
                         </ul> : null
                     }
                 </div>
-                
-                
                 
                 <ToUpButton />
 

@@ -4,6 +4,7 @@ import LoadingOverlay from 'react-loading-overlay';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { setSearchText } from '../states/reducers/index';
+import { Helmet } from 'react-helmet';
 
 const AnimeDetail = () => {
     const location = useLocation();
@@ -38,6 +39,12 @@ const AnimeDetail = () => {
             text='Loading your movies...'
         >
             <div className='downloadPage bg-dark d-flex justify-content-center'>
+                <Helmet>
+                    <meta charSet='utf-8' />
+                    <title>{details?.movie_name}</title>
+                    <meta name='keywords' content='anime, movies, free download anime movies, cartoons, free movie download, anime free download, anime series' />
+                    <meta name='description' content='free anime movies download' />
+                </Helmet>
                 <div className='container my-5'>
                     <div className='row text-white'>
                         <h2 className='px-lg-5 px-md-5 px-3 text-center'>
