@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const setSearchTextSlice = createSlice({
+const setSearchTextSlice = createSlice({
     name: 'setSearchText',
     initialState: {serachText:''},
     reducers: {
@@ -10,5 +10,18 @@ export const setSearchTextSlice = createSlice({
     }
 });
 
-export const {setSearchText} = setSearchTextSlice.actions;
-export default setSearchTextSlice.reducer;
+const pageNumberStoreSlice = createSlice({
+    name: 'pageNumber',
+    initialState:{pNumber: 1},
+    reducers: {
+        pageNumber(state, action) {
+            state.pNumber = action.payload;
+        }
+    }
+});
+
+export {setSearchTextSlice};
+export {pageNumberStoreSlice}
+export const {pageNumber} = pageNumberStoreSlice.actions
+// export const {pageNumber} = pageNumberStoreSlice.actions;
+// export default setSearchTextSlice.reducer;

@@ -1,8 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import searchReducer from './reducers/index';
+import {setSearchTextSlice, pageNumberStoreSlice} from './reducers/index';
 
 export default configureStore ({
     reducer: {
-        string: searchReducer
-    }
+        searchText: setSearchTextSlice.reducer,
+        pNumber: pageNumberStoreSlice.reducer,
+    },
 }, window._REDUX_DEVTOOLS_EXTENSION_ && window._REDUX_DEVTOOLS_EXTENSION_());

@@ -5,24 +5,18 @@ import CarouselSlider from '../components/CarouselSlider';
 import ToUpButton from '../components/ToUpButton';
 import axios from 'axios';
 import LoadingOverlay from 'react-loading-overlay';
-import { useNavigate } from 'react-router-dom';
-import { setSearchText } from '../states/reducers/index';
-import SearchedMovies from './SearchedMovies';
 import { Helmet } from 'react-helmet';
+import { pageNumber } from '../states/reducers';
 
 const Home = () => {
 
     const limit = 24;
-
-    const searchTerm = useSelector(state=> state.string.setSearchText);
-    // const resetSearch = useSelector(state=> state.string.setSearchText);
-    const [ moviess, setMoviess ] = useState([]);
+    const {pNumber} = useSelector(state=> state.pNumber);
     const [ movies, setMovies ] = useState([]);
     const [ loading, setLoading ] = useState(false);
-    // const dispatch = useDispatch();
-    const navigate = useNavigate();
+    const dispatch = useDispatch();
     const [ totalMovies, setTotalMovies ] = useState(0);
-    const [ activePage, setActivePage ] = useState(1);
+    const [ activePage, setActivePage ] = useState(pNumber);
 
     const getMovieData = async () => {
         setLoading(true);
@@ -51,7 +45,9 @@ const Home = () => {
     useEffect(()=>{
         getMovieData();
         window.scroll(0,0);
-        navigate('/')
+        console.log(dispatch(pageNumber(activePage)))
+        // console.log(pNumber);
+        // navigate('/')
     },[activePage]);
 
     return (
@@ -68,13 +64,11 @@ const Home = () => {
                     <meta name='keywords' content='anime, movies, free download anime movies, cartoons, free movie download, anime free download, anime series' />
                     <meta name='description' content='free anime movies download' />
                 </Helmet>
-                {!searchTerm ?
+                
                 <div className='mb-lg-2 mb-md-2 mb-2 py-1'>
                     <CarouselSlider />
                 </div>
-                :
-                ''
-                }
+                
                 <div className='container mt-2'>
 
                     <div className='row g-lg-3 g-md-3'>
@@ -94,19 +88,17 @@ const Home = () => {
 
                 
                 <div className='d-flex justify-content-center align-items-center py-5 my-lg-5 my-md-5'>
-                    {moviess.length === 0 ?
-                        <ul className='text-white d-flex justify-content-center align-items-center gap-lg-3 gap-md-3 gap-2 p-0 px-2 paginationUl'>
-                            {
-                                activePage !== 1 && <li className='pageList' onClick={()=>setActivePage(activePage - 1)}>Previous</li>
-                            }
-                            {
-                                totalPagesCalc(totalMovies, limit).slice(Math.max(0, activePage - 3), Math.min(totalMovies, activePage + 4)).map((val)=>{
-                                    return <li className={`pageList py-1 px-2 ${val === activePage ? 'activePageList' : ''}`} onClick={()=>setActivePage(val)} key={val}>{val}</li>
-                                })
-                            }
-                            {activePage !== Math.ceil(totalMovies/limit) ? <li className='pageList' onClick={()=>setActivePage(activePage + 1)}>Next</li> : '' }
-                        </ul> : null
-                    }
+                    <ul className='text-white d-flex justify-content-center align-items-center gap-lg-3 gap-md-3 gap-2 p-0 px-2 paginationUl'>
+                        {
+                            activePage !== 1 && <li className='pageList' onClick={()=>setActivePage(activePage - 1)}>Previous</li>
+                        }
+                        {
+                            totalPagesCalc(totalMovies, limit).slice(Math.max(0, activePage - 3), Math.min(totalMovies, activePage + 4)).map((val)=>{
+                                return <li className={`pageList py-1 px-2 ${val === activePage ? 'activePageList' : ''}`} onClick={()=>setActivePage(val)} key={val}>{val}</li>
+                            })
+                        }
+                        {activePage !== Math.ceil(totalMovies/limit) ? <li className='pageList' onClick={()=>setActivePage(activePage + 1)}>Next</li> : '' }
+                    </ul>
                 </div>
                 
                 <ToUpButton />

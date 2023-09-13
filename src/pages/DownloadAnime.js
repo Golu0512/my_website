@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import LoadingOverlay from 'react-loading-overlay';
 import axios from 'axios';
-import { useDispatch } from 'react-redux';
-import { setSearchText } from '../states/reducers/index';
+// import { useDispatch } from 'react-redux';
+// import { setSearchText } from '../states/reducers/index';
 import { Helmet } from 'react-helmet';
 
 const AnimeDetail = () => {
     const location = useLocation();
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     const [ loading, setLoading ] = useState(false);
     const [ details, setDetails ] = useState([]);
     const animeId = location.state.id || 1;
@@ -20,7 +20,7 @@ const AnimeDetail = () => {
             const res = await axios.post('https://my-website-api.onrender.com/get_single_data', sendId);
             setDetails(res?.data)
             setLoading(false);
-            dispatch(setSearchText(''))
+            // dispatch(setSearchText(''))
         } catch (error) {
             console.error('Error fetching data:', error);
         }
