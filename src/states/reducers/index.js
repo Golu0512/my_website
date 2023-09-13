@@ -23,5 +23,6 @@ const pageNumberStoreSlice = createSlice({
 export {setSearchTextSlice};
 export {pageNumberStoreSlice}
 export const {pageNumber} = pageNumberStoreSlice.actions
+export const {setSearchText} = setSearchTextSlice.actions
 // export const {pageNumber} = pageNumberStoreSlice.actions;
 // export default setSearchTextSlice.reducer;
