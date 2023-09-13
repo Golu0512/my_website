@@ -45,9 +45,7 @@ const Home = () => {
     useEffect(()=>{
         getMovieData();
         window.scroll(0,0);
-        console.log(dispatch(pageNumber(activePage)))
-        // console.log(pNumber);
-        // navigate('/')
+        dispatch(pageNumber(activePage))
     },[activePage]);
 
     return (
