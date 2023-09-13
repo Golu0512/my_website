@@ -53,7 +53,7 @@ const Header = () => {
                         <Link to='/'>
                             <div className='d-flex justify-content-center align-items-center'>
                                 <img src='/images/logo.png' height='50px' />
-                                <span className="navbar-brand text-capitalize" >funkyanimehub</span>
+                                <span className="navbar-brand text-capitalize logoNameEffect" >funkyanimehub</span>
                             </div>
                         </Link>
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

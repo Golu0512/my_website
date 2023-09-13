@@ -40,42 +40,42 @@ const UserRequirement = () => {
 
     return (
         <>
-        <form
-            className='d-grid gap-1 gap-lg-1 gap-md-1' 
-            onSubmit={handleSubmit}
-        >
-            <input 
-                type='text' 
-                className='footerInput rounded-pill px-2 p-1' 
-                placeholder='Movie Name'
-                name='movie_name'
-                onChange={handleChangeValue}
-                value={requirement.movie_name}
-            />
-            <input 
-                type='text' 
-                className='footerInput rounded-pill px-2 p-1'
-                placeholder='Email Address' 
-                name='email'
-                onChange={handleChangeValue}
-                value={requirement.email}
-            />
-            <input 
-                type='text' 
-                className='footerInput rounded-pill px-2 p-1' 
-                placeholder='Mobile Number'
-                name='mobile_number'
-                onChange={handleChangeValue}
-                value={requirement.mobile_number}
-            />
-            <button 
-                type='submit'
-                className='btn btn-success ms-lg-2 ms-md-2 ms-2 rounded-pill text-capitalize'
+            <form
+                className='d-lg-flex d-md-grid d-grid justify-content-center align-items-center gap-1 gap-lg-1 gap-md-1' 
+                onSubmit={handleSubmit}
             >
-                submit
-            </button>
-        </form>
-        <ToastContainer />
+                <input 
+                    type='text' 
+                    className='footerInput rounded-pill px-2 p-1' 
+                    placeholder='Movie Name'
+                    name='movie_name'
+                    onChange={handleChangeValue}
+                    value={requirement.movie_name}
+                />
+                <input 
+                    type='text' 
+                    className='footerInput rounded-pill px-2 p-1'
+                    placeholder='Email Address' 
+                    name='email'
+                    onChange={handleChangeValue}
+                    value={requirement.email}
+                />
+                <input 
+                    type='text' 
+                    className='footerInput rounded-pill px-2 p-1' 
+                    placeholder='Mobile Number'
+                    name='mobile_number'
+                    onChange={handleChangeValue}
+                    value={requirement.mobile_number}
+                />
+                <button 
+                    type='submit'
+                    className='btnFooterSubmit-btn btnFooterSubmit btn-7 text-uppercase ms-lg-3 ms-md-0 ms-0'
+                >
+                    <span>submit</span>
+                </button>
+            </form>
+            <ToastContainer />
         </>
     )
 }

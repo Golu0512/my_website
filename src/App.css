@@ -8,6 +8,19 @@
   border-bottom: 2px solid red;
 } */
 
+.logoNameEffect {
+  color: pink;
+  text-shadow:
+    0 0 5px pink,
+    0 0 10px pink,
+    0 0 20px pink,
+    0 0 40px #bc13fe,
+    0 0 80px #bc13fe,
+    0 0 90px #bc13fe,
+    0 0 100px #bc13fe,
+    0 0 150px #bc13fe;
+}
+
 .pointer {
   cursor: pointer;
 }
@@ -47,13 +60,174 @@ a {
   object-fit: contain;
 }
 
+/* footer section */
+
 .mainFooter {
   background-color: dimgrey;
   width: 100%;
 }
 
+/* footer social Icons */
+
+.containerIcon
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.btnSocialIcon
+{
+    width: 50px;
+    height: 50px;
+    background-color: #fafafa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 2em;
+    margin-right: 1em;
+    cursor: pointer;
+    transition: all 0.3s;
+    border-radius: 10px;
+}
+i.fa
+{
+    font-size: 30px;
+}
+
+#fb
+{
+    color: #006fff;
+    text-shadow: 0 0 30px #006fff;
+}
+#ig
+{
+    color: #ff5f40;
+    text-shadow: 0 0 30px #ff5f40;
+}
+#tl
+{
+    color: #00acff;
+    text-shadow: 0 0 30px #00acff;
+}
+
+.btn.fb-btn
+{
+    box-shadow: 0 20px 20px -17px rgba(0,111,255,0.53);
+}
+.btn.fb-btn:hover
+{
+    transform: scale(1.1);
+    box-shadow: 0 0 45px 0 rgba(0,111,255,0.65);
+}
+.btn.ig-btn
+{
+    box-shadow: 0 20px 20px -17px rgba(255,16,39,0.5);
+}
+
+.btn.ig-btn:hover
+{
+    transform: scale(1.1);
+    box-shadow: 0 0 45px 0 rgba(255,16,39,0.57);
+}
+.btn.tl-btn
+{
+    box-shadow: 0 20px 20px -17px rgba(0,255,255,0.53);
+}
+.btn.tl-btn:hover
+{
+    transform: scale(1.1);
+    box-shadow: 0 0 45px 0 rgba(0,111,255,0.6);
+}
+
+/* Requirement form */
+
 .footerInput {
+  width: 150px;
+  outline: none;
+  border: none;
+  transition: width 0.5s ease-in-out;
+}
+
+.footerInput:focus {
+  outline: 2px solid green;
   width: 300px;
+}
+
+.btnFooterSubmit-btn {
+  color: #fff;
+  width: 130px;
+  height: 40px;
+  padding: 10px 25px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+}
+
+.btnFooterSubmit {
+  color: #21ebff;
+  line-height: 40px;
+  padding: 0;
+  border: none;
+}
+.btnFooterSubmit span {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.btnFooterSubmit:before,
+.btnFooterSubmit:after {
+  position: absolute;
+  content: "";
+  right: 0;
+  bottom: 0;
+  background: #21ebff;
+  box-shadow: 0 0 5px #21ebff;
+  transition: all 0.3s ease;
+}
+.btnFooterSubmit:before{
+  height: 50%;
+  width: 2px;
+}
+.btnFooterSubmit:after {
+  width: 20%;
+  height: 2px;
+}
+.btnFooterSubmit:hover:before {
+  height: 100%;
+}
+.btnFooterSubmit:hover:after {
+  width: 100%;
+}
+.btnFooterSubmit span:before,
+.btnFooterSubmit span:after {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 0;
+  background: #21ebff;
+  box-shadow: 0 0 5px #21ebff;
+  transition: all 0.3s ease;
+}
+.btnFooterSubmit span:before {
+  width: 2px;
+  height: 50%;
+}
+.btnFooterSubmit span:after {
+  height: 2px;
+  width: 20%;
+}
+.btnFooterSubmit span:hover:before {
+  height: 100%;
+}
+.btnFooterSubmit span:hover:after {
+  width: 100%;
 }
 
 .downloadPage {

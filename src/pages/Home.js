@@ -78,11 +78,11 @@ const Home = () => {
                 <div className='container mt-2'>
 
                     <div className='row g-lg-3 g-md-3'>
-                        <h4 className='text-white text-capitalize text-center bg-warning'>{moviess.length === 0 ? 'latest movies' : 'searched'}</h4>
+                        <h4 className='text-white text-capitalize text-center bg-warning'>latest movies</h4>
                         {
                             movies.map((val) =>{
                                 return (
-                                    <div className='col-lg-2 col-md-6 col-sm-6 mb-lg-4 mb-md-4 mb-4 d-flex justify-content-center' key={val._id}>
+                                    <div className='col-lg-2 col-md-4 col-6 mb-lg-4 mb-md-4 mb-4 d-flex justify-content-center' key={val._id}>
                                         <MovieCard id={val._id} image={val.cover_image} moviename={val.movie_name} />
                                     </div>
                                 )
@@ -100,7 +100,7 @@ const Home = () => {
                                 activePage !== 1 && <li className='pageList' onClick={()=>setActivePage(activePage - 1)}>Previous</li>
                             }
                             {
-                                totalPagesCalc(totalMovies, limit).map((val)=>{
+                                totalPagesCalc(totalMovies, limit).slice(Math.max(0, activePage - 3), Math.min(totalMovies, activePage + 4)).map((val)=>{
                                     return <li className={`pageList py-1 px-2 ${val === activePage ? 'activePageList' : ''}`} onClick={()=>setActivePage(val)} key={val}>{val}</li>
                                 })
                             }
