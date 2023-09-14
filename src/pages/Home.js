@@ -58,7 +58,7 @@ const Home = () => {
             <div className='homeContainer bg-dark'>
                 <Helmet>
                     <meta charSet='utf-8' />
-                    <title>funkyanimehub</title>
+                    <title>funkyanimehub - anime | free anime download | anime movies and series</title>
                     <meta name='keywords' content='anime, movies, free download anime movies, cartoons, free movie download, anime free download, anime series' />
                     <meta name='description' content='free anime movies download' />
                 </Helmet>
