@@ -78,23 +78,27 @@ const AnimeDetail = () => {
                         <div className='text-center mt-4'>
                         <span className='text-center mt-4 font-bold fs-4 text-capitalize text-success'>download links</span>
                         </div>
-                        <div className='w-50 mt-4 d-flex justify-content-center'>
+                        <div className='p-0 mt-4 d-lg-flex d-md-flex d-sm-grid justify-content-lg-center justify-content-md-center justify-content-center'>
                             {
                                 details?.download_low != '' ?
                                 <Link to={details?.download_low} target="_blank">
-                                    <button className='btn btn-success'>download 480p</button>
+                                    <button class="download-btn downloadBtn text-capitalize d-flex align-items-center justify-content-center"><span>download 480p</span></button>
                                 </Link> : ''
                             }
                             {
                                 details?.download_medium != '' ?
                                 <Link to={details?.download_medium} target="_blank">
-                                    <button className='btn btn-success mx-3'>download 720p</button>
+                                    <button 
+                                        class="download-btn downloadBtn text-capitalize d-flex align-items-center justify-content-center mx-lg-3 mx-md-3 mx-0 my-lg-0 my-md-0 my-3"
+                                    >
+                                        <span>download 720p</span>
+                                    </button>
                                 </Link> : ''
                             }
                             {
                                 details?.download_high != '' ?
                                 <Link to={details?.download_high} target="_blank">
-                                    <button className='btn btn-success'>download 1080p</button>
+                                    <button class="download-btn downloadBtn text-capitalize d-flex align-items-center justify-content-center"><span>download 1080p</span></button>
                                 </Link> : ''
                             }
                         </div>

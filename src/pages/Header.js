@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { setSearchText } from '../states/reducers/index';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Container from 'react-bootstrap/Container';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 
 
 const Header = () => {
@@ -16,14 +18,9 @@ const Header = () => {
         theme: "colored"
     });
 
-    // const resetSearch = useSelector(state=> state.string.setSearchText);
-    // const searchTerm = useSelector(state=> state.string)
-    // const dispatch = useDispatch();
-
     const setSearchHandle = (e) =>{
         const {name, value} = e.target;
         setSearchMovie({...searchMovie, [name]: value});
-        // dispatch(setSearchText(value))
     }
 
     const getSearchedData = async (e) => {
@@ -48,7 +45,7 @@ const Header = () => {
     return (
         <>
             <div className='header zIndex1 border-bottom sticky-top'>
-                <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+                {/* <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                     <div className="container-fluid">
                         <Link to='/'>
                             <div className='d-flex justify-content-center align-items-center'>
@@ -74,7 +71,53 @@ const Header = () => {
                         </form>
                         </div>
                     </div>
-                </nav>
+                </nav> */}
+
+                <Navbar expand="lg" className="navbar-dark bg-dark">
+                    <Container>
+                        <Navbar.Brand>
+                            <Link to='/'>
+                                <div className='d-flex justify-content-center align-items-center'>
+                                    <img src='/images/logo.png' alt='LOGO' height='50px' width='50px' />
+                                    <span className="navbar-brand text-capitalize logoNameEffect" >funkyanimehub</span>
+                                </div>
+                            </Link>
+                        </Navbar.Brand>
+
+                        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                        <Navbar.Collapse id="basic-navbar-nav">
+                            <Nav className="me-auto text-center">
+                                <Nav.Item>
+                                    <Link to='/'>
+                                        <span className="nav-link text-white" >Home</span>
+                                    </Link>
+                                </Nav.Item>
+                                <Nav.Item>
+                                    <Link to='/about'>
+                                        <span className="nav-link text-white" >About</span>
+                                    </Link>
+                                </Nav.Item>
+
+                                {/* <NavDropdown title="Genres" id="basic-nav-dropdown">
+                                    <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+                                    <NavDropdown.Item href="#action/3.2">
+                                        Another action
+                                    </NavDropdown.Item>
+                                    <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                                    <NavDropdown.Divider />
+                                    <NavDropdown.Item href="#action/3.4">
+                                        Separated link
+                                    </NavDropdown.Item>
+                                </NavDropdown> */}
+
+                            </Nav>
+                            <form onSubmit={getSearchedData} className="d-flex w-100 justify-content-lg-end justify-content-md-end justify-content-center px-lg-5 px-md-5 px-0">
+                                <input className="form-control me-4 w-50" value={searchMovie.search} onChange={setSearchHandle} type="search" placeholder="Search" name='search' />
+                                <button type='submit' className="search-button text-capitalize"><span>searching!</span><span>click</span></button>
+                            </form>
+                        </Navbar.Collapse>
+                    </Container>
+                </Navbar>
             </div>
             <ToastContainer />
         </>

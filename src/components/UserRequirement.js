@@ -22,11 +22,14 @@ const UserRequirement = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const { movie_name, email, mobile_number } = requirement;
+        const regEx = /[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,8}(.[a-z{2,8}])?/g;        
         let response;
         if (!movie_name || !email || !mobile_number) {
             notify('Please fill all fields');
-        } else {
+        } else if (regEx.test(email)) {
             response = await axios.post('https://my-website-api.onrender.com/user_requirement', requirement);
+        } else if (!regEx.test(email) && email !== "") {
+            notify("Invalid email");
         }
         if (response) {
             notify(response?.data.message);
@@ -61,7 +64,7 @@ const UserRequirement = () => {
                     value={requirement.email}
                 />
                 <input 
-                    type='text' 
+                    type='number' 
                     className='footerInput rounded-pill px-2 p-1' 
                     placeholder='Mobile Number'
                     name='mobile_number'

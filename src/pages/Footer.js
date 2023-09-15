@@ -17,7 +17,7 @@ const Footer = () => {
                         </div>
 
                         <div className='col-lg-10 col-md-10 col-12 d-grid justify-content-center'>
-                            <span className='text-white text-capitalize fw-bold text-center'>submit anime name, we'll provide you within 24 hours</span>
+                            <span className='text-white text-capitalize fw-bold text-center'>submit anime name, we'll provide you within 24 hours and notify on your valid mail or conatct number!</span>
                             <div className='d-flex justify-content-center align-items-center'>
                                 <UserRequirement />
                             </div>

@@ -7,21 +7,21 @@ const SocialMedia = () => {
         <>
             <div className="container p-0 gap-lg-4 gap-md-4 gap-2 mb-lg-0 mb-md-0 mb-4 containerIcon">
                 <div className="btn fb-btn m-0 btnSocialIcon">
-                    <Link to='https://www.facebook.com/profile.php?id=61551036637045' target='_blank'>
+                    <Link to='https://www.facebook.com/profile.php?id=61551036637045' aria-label="this link take you to the facebook page" target='_blank'>
                         <i className="fa fa-facebook d-flex" id="fb">
                             <FaFacebookF />
                         </i>
                     </Link>
                 </div>
                 <div className="btn ig-btn m-0 btnSocialIcon">
-                    <Link to='https://www.instagram.com/funkyanimehub/' target='_blank'>
+                    <Link to='https://www.instagram.com/funkyanimehub/' aria-label="this link take you to the instagram page" target='_blank'>
                         <i className="fa fa-instagram d-flex" id="ig">
                             <FaInstagram />
                         </i>
                     </Link>
                 </div>
                 <div className="btn tl-btn m-0 btnSocialIcon">
-                    <Link to='https://t.me/+VKVMIq55Ods3Mjg9' target='_blank'>
+                    <Link to='https://t.me/+VKVMIq55Ods3Mjg9' aria-label="this link take you to the telegram channel" target='_blank'>
                         <i className="fa fa-telegram d-flex" id="tl">
                             <FaTelegramPlane />
                         </i>

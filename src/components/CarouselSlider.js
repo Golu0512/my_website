@@ -11,8 +11,8 @@ const CarouselSlider = () => {
             <MDBCarouselItem
                 className='w-100 d-block cardImage'
                 itemId={1}
-                src='/images/banner1.png'
-                alt='...'
+                src='/images/banner1.webp'
+                alt='banner1'
                 
             >
             </MDBCarouselItem>
@@ -20,8 +20,8 @@ const CarouselSlider = () => {
             <MDBCarouselItem
                 className='w-100 d-block cardImage'
                 itemId={2}
-                src='/images/banner2.png'
-                alt='...'
+                src='/images/banner2.webp'
+                alt='banner2'
                 
             >
             </MDBCarouselItem>
@@ -29,8 +29,8 @@ const CarouselSlider = () => {
             <MDBCarouselItem
                 className='w-100 d-block cardImage'
                 itemId={3}
-                src='/images/banner3.png'
-                alt='...'
+                src='/images/banner3.webp'
+                alt='banner13'
                 
             >
             </MDBCarouselItem>

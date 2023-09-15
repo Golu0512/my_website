@@ -155,6 +155,18 @@ i.fa
   width: 300px;
 }
 
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 .btnFooterSubmit-btn {
   color: #fff;
   width: 130px;
@@ -383,4 +395,54 @@ i.fa
   -webkit-transform: rotateX(-90deg);
   -moz-transform: rotateX(-90deg);
   transform: rotateX(-90deg);
+}
+
+
+/* Download button */
+
+.download-btn {
+  color: #fff;
+  width: 170px;
+  height: 40px;
+  padding: 10px 15px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.downloadBtn {
+  border: 1px solid #fff;
+  box-shadow: 0 0 5px #fff, 0 0 5px #fff inset;
+}
+.downloadBtn:after {
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 100%;
+  top: 0;
+  left: 0;
+  direction: rtl;
+  z-index: -1;
+  box-shadow:
+  -7px -7px 20px 0px #fff9,
+  -4px -4px 5px 0px #fff9,
+  7px 7px 20px 0px #0002,
+  4px 4px 5px 0px #0001;
+  transition: all 0.3s ease;
+}
+.downloadBtn:hover {
+  box-shadow: rgba(255,255,255, 1) -1px -1px,  -2px -2px, rgba(255,255,255, 1) -3px -3px, rgba(255,255,255, .9) -4px -4px,
+    rgba(255,255,255,.8) -5px -5px, rgba(255,255,255,.7) -6px -6px, rgba(255,255,255,.6) -7px -7px, rgba(255,255,255,.5) -8px -8px,
+      rgba(255,255,255,.4) -9px -9px, rgba(255,255,255,.3) -10px -10px, rgba(255,255,255,.2) -11px -11px, rgba(255,255,255,.1) -12px -12px;
+}
+.downloadBtn:hover:after {
+  left: auto;
+  right: 0;
+  width: 100%;
+}
+.downloadBtn:active {
+  top: 2px;
 }

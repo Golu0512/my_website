@@ -12,7 +12,7 @@ const ToUpButton = () => {
         <>
             <div className='d-flex justify-content-end px-xl-4 px-lg-4 px-md-4 px-4'>
                 <Tooltip title="Go To Top" placement="top" arrow>
-                    <span className='d-flex bg_to_up rounded-pill p-2' onClick={goToUp}>
+                    <span className='d-flex bg_to_up rounded-pill p-2' aria-label="Go To Top" onClick={goToUp}>
                         <TbNavigationFilled />
                     </span>
                 </Tooltip>
