@@ -78,7 +78,7 @@ const AnimeDetail = () => {
                         <div className='text-center mt-4'>
                         <span className='text-center mt-4 font-bold fs-4 text-capitalize text-success'>download links</span>
                         </div>
-                        <div className='p-0 mt-4 d-lg-flex d-md-flex d-sm-grid justify-content-lg-center justify-content-md-center justify-content-center'>
+                        <div className='p-0 mt-4 d-lg-flex d-md-flex d-grid justify-content-lg-center justify-content-md-center justify-content-center'>
                             {
                                 details?.download_low != '' ?
                                 <Link to={details?.download_low} target="_blank">
