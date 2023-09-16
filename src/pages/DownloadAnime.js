@@ -7,6 +7,7 @@ import axios from 'axios';
 import { Helmet } from 'react-helmet';
 
 const AnimeDetail = () => {
+    LoadingOverlay.propTypes = undefined;
     const location = useLocation();
     // const dispatch = useDispatch();
     const [ loading, setLoading ] = useState(false);
@@ -58,9 +59,9 @@ const AnimeDetail = () => {
                         <div className='col-12'><p className='px-lg-5 px-md-5 px-3 text-center'><span className='text-info fw-bold'>Omnitheater.com</span> is one of the Best Websites/Platform For Anime, and Series.</p></div>
                     </div>
                     {
-                        details?.banner_link != '' ?
+                        details?.banner_link !== '' ?
                         <div className='row text-white d-flex justify-content-center'>
-                            <img className='downloadBannerImg' src={details?.banner_link} width='400px' height='300px' />
+                            <img className='downloadBannerImg' src={details?.banner_link} alt={details?.movie_name} width='400px' height='300px' />
                         </div> : ''
                     }
                     <div className='row text-white my-4 d-flex justify-content-center'>
@@ -70,7 +71,7 @@ const AnimeDetail = () => {
                         <span className='text-center mt-4 font-bold text-white text-capitalize text-info'>Releasing Year: {details?.releasing_year}</span>
                         <span className='text-center mt-4 font-bold text-white text-capitalize text-info'>Language: {details?.language}</span>
                         <span className='text-center mt-4 font-bold text-white text-capitalize text-info'>Resolution: {details?.resolution}</span>
-                        {details?.file_size != '' ? <span className='text-center mt-4 font-bold text-white text-capitalize text-info'>Size: {details?.file_size}</span> : '' }
+                        {details?.file_size !== '' ? <span className='text-center mt-4 font-bold text-white text-capitalize text-info'>Size: {details?.file_size}</span> : '' }
                         <div className='d-grid w-75'>
                             <span className='text-center mt-4 font-bold fs-4 text-capitalize text-danger'>short description</span>
                             <span className='text-center mt-4 font-bold text-white'>{details?.quick_story}</span>
@@ -80,33 +81,33 @@ const AnimeDetail = () => {
                         </div>
                         <div className='p-0 mt-4 d-lg-flex d-md-flex d-grid justify-content-lg-center justify-content-md-center justify-content-center'>
                             {
-                                details?.download_low != '' ?
+                                details?.download_low !== '' ?
                                 <Link to={details?.download_low} target="_blank">
-                                    <button class="download-btn downloadBtn text-capitalize d-flex align-items-center justify-content-center"><span>download 480p</span></button>
+                                    <button className="download-btn downloadBtn text-capitalize d-flex align-items-center justify-content-center"><span>download 480p</span></button>
                                 </Link> : ''
                             }
                             {
-                                details?.download_medium != '' ?
+                                details?.download_medium !== '' ?
                                 <Link to={details?.download_medium} target="_blank">
                                     <button 
-                                        class="download-btn downloadBtn text-capitalize d-flex align-items-center justify-content-center mx-lg-3 mx-md-3 mx-0 my-lg-0 my-md-0 my-3"
+                                        className="download-btn downloadBtn text-capitalize d-flex align-items-center justify-content-center mx-lg-3 mx-md-3 mx-0 my-lg-0 my-md-0 my-3"
                                     >
                                         <span>download 720p</span>
                                     </button>
                                 </Link> : ''
                             }
                             {
-                                details?.download_high != '' ?
+                                details?.download_high !== '' ?
                                 <Link to={details?.download_high} target="_blank">
-                                    <button class="download-btn downloadBtn text-capitalize d-flex align-items-center justify-content-center"><span>download 1080p</span></button>
+                                    <button className="download-btn downloadBtn text-capitalize d-flex align-items-center justify-content-center"><span>download 1080p</span></button>
                                 </Link> : ''
                             }
                         </div>
-                        {details?.youtube_trailer != '' ?
+                        {details?.youtube_trailer !== '' ?
                             <div className='mt-4 text-center'>
                                 <span className='text-center font-bold fs-4 text-capitalize text-info'>movie trailer</span>
                                 <div className="ratio ratio-16x9 mt-4">
-                                    <iframe src={details?.youtube_trailer} title="YouTube video" allowfullscreen></iframe>
+                                    <iframe src={details?.youtube_trailer} title="YouTube video" allowFullScreen></iframe>
                                 </div>
                             </div> : ''
                         }

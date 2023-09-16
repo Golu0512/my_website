@@ -11,6 +11,7 @@ import { pageNumber } from '../states/reducers';
 const Home = () => {
 
     const limit = 24;
+    LoadingOverlay.propTypes = undefined;
     const {pNumber} = useSelector(state=> state.pNumber);
     const [ movies, setMovies ] = useState([]);
     const [ loading, setLoading ] = useState(false);
