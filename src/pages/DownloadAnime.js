@@ -103,7 +103,7 @@ const AnimeDetail = () => {
                             }
                         </div>
                         {details?.youtube_trailer != '' ?
-                            <div className='w-75 mt-4 text-center'>
+                            <div className='mt-4 text-center'>
                                 <span className='text-center font-bold fs-4 text-capitalize text-info'>movie trailer</span>
                                 <div className="ratio ratio-16x9 mt-4">
                                     <iframe src={details?.youtube_trailer} title="YouTube video" allowfullscreen></iframe>
