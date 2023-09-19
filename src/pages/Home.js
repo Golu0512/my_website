@@ -51,18 +51,19 @@ const Home = () => {
 
     return (
         <>
+        <Helmet>
+            <meta charSet='utf-8' />
+            <title>funkyanimehub - anime | free anime download | anime movies and series</title>
+            <meta name='keywords' content='anime, movies, free download anime movies, cartoons, free movie download, anime free download, anime series' />
+            <meta name='description' content='free anime movies download, all types anime movies and series downloaded here and enjoy with adds free environment' />
+        </Helmet>
         <LoadingOverlay
             active={loading}
             spinner
             text='Loading your movies...'
         >
             <div className='homeContainer bg-dark'>
-                <Helmet>
-                    <meta charSet='utf-8' />
-                    <title>funkyanimehub - anime | free anime download | anime movies and series</title>
-                    <meta name='keywords' content='anime, movies, free download anime movies, cartoons, free movie download, anime free download, anime series' />
-                    <meta name='description' content='free anime movies download' />
-                </Helmet>
+                
                 
                 <div className='mb-lg-2 mb-md-2 mb-2 py-1'>
                     <CarouselSlider />
