@@ -7,7 +7,7 @@ const SearchedMovies = () => {
     const movies = location.state.result.data
     return (
         <>
-        <div className='homeContainer bg-dark'>
+        <div className='homeContainer'>
             <div className='container'>
                 <div className='row g-lg-3 g-md-3 py-lg-4 py-md-4 py-3'>
                 <h4 className='text-white text-uppercase text-center bg-warning'>{movies.length > 0 ? 'search result' : 'movie not found'}</h4>

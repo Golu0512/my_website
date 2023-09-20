@@ -62,7 +62,7 @@ const Home = () => {
             spinner
             text='Loading your movies...'
         >
-            <div className='homeContainer bg-dark'>
+            <div className='homeContainer'>
                 
                 
                 <div className='mb-lg-2 mb-md-2 mb-2 py-1'>

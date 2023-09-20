@@ -39,7 +39,7 @@ const AnimeDetail = () => {
             spinner
             text='Loading your movies...'
         >
-            <div className='downloadPage bg-dark d-flex justify-content-center'>
+            <div className='downloadPage d-flex justify-content-center'>
                 <Helmet>
                     <meta charSet='utf-8' />
                     <title>{details?.movie_name}</title>
@@ -64,7 +64,7 @@ const AnimeDetail = () => {
                             <img className='downloadBannerImg' src={details?.banner_link} alt={details?.movie_name} width='400px' height='300px' />
                         </div> : ''
                     }
-                    <div className='row text-white my-4 d-flex justify-content-center'>
+                    <div className='row text-white my-4 d-flex justify-content-center bg-dark'>
                         <h4 className='w-75 text-center'>{details?.movie_name} ({details?.releasing_year}) [{details?.language}] Download | {details?.resolution}</h4>
                         <span className='text-center mt-4 font-bold fs-4 text-capitalize text-info'>movie information</span>
                         <span className='text-center mt-4 font-bold text-white text-capitalize text-info'>Name: {details?.movie_name}</span>

@@ -4,6 +4,13 @@
   margin: 0;
 }
 
+body {
+  background-image: url('../public/images/theme3.png');
+  background-size:     cover;
+    background-repeat:   no-repeat;
+    background-position: center center;
+}
+
 /* .active {
   border-bottom: 2px solid red;
 } */
