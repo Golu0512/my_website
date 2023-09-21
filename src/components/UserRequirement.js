@@ -27,7 +27,7 @@ const UserRequirement = () => {
         if (!movie_name || !email || !mobile_number) {
             notify('Please fill all fields');
         } else if (regEx.test(email)) {
-            response = await axios.post('https://my-website-api.onrender.com/user_requirement', requirement);
+            response = await axios.post('https://funkyanimehubapi.onrender.com/user_requirement', requirement);
         } else if (!regEx.test(email) && email !== "") {
             notify("Invalid email");
         }

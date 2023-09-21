@@ -21,7 +21,7 @@ const Home = () => {
 
     const getMovieData = async () => {
         setLoading(true);
-        await axios.get('https://my-website-api.onrender.com/old_movies', {
+        await axios.get('https://funkyanimehubapi.onrender.com/old_movies', {
             params: {
                 page: activePage,
                 limit: limit

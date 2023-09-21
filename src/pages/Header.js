@@ -28,7 +28,7 @@ const Header = () => {
         if (searchMovie.search !== '') {
             try {
                 notify('Please wait...')
-                let result = await axios.get('https://my-website-api.onrender.com/old_movies', {
+                let result = await axios.get('https://funkyanimehubapi.onrender.com/old_movies', {
                     params: {
                         search: searchMovie.search
                     }

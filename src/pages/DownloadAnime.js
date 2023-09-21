@@ -18,7 +18,7 @@ const AnimeDetail = () => {
     const getAboutMovieData = async () => {
         setLoading(true);
         try {
-            const res = await axios.post('https://my-website-api.onrender.com/get_single_data', sendId);
+            const res = await axios.post('https://funkyanimehubapi.onrender.com/get_single_data', sendId);
             setDetails(res?.data)
             setLoading(false);
             // dispatch(setSearchText(''))
